@@ -1,0 +1,132 @@
+# BLE Probe Results
+
+- Device: `3006d789-0d8f-7433-40c0-e3421c918002`
+
+| label | channel | sent | response | class |
+| ----- | ------- | ---- | -------- | ----- |
+| read_0000ffa2 | FFE1/FFE2 | `(read)` | `` | non-standard |
+| read_0000ffe2 | FFE1/FFE2 | `(read)` | `` | non-standard |
+| read_0000ffa2 | AE01/AE02 | `(read)` | `` | non-standard |
+| read_0000ffe2 | AE01/AE02 | `(read)` | `` | non-standard |
+| read_0000ffa2 | FFA1/FFA2 | `(read)` | `` | non-standard |
+| read_0000ffe2 | FFA1/FFA2 | `(read)` | `` | non-standard |
+| probeA_H=00 | AE01/AE02 | `00 00 00 00 00 00 00` | `01 DB 6C 46 EC 1C D4 9D F6 DE 72 F5 66 08 EC 30 D9` | non-standard |
+| probeB_H=00 | AE01/AE02 | `00 01 00 00 00 00 00` | `01 28 CE 31 F6 D1 27 84 42 E2 E6 EC 31 07 69 4A 70` | non-standard |
+| probeC_H=00 | AE01/AE02 | `03 00 00 00` | `(no response)` | silent |
+| probeA_H=55 | AE01/AE02 | `55 00 00 00 00 00 00` | `(no response)` | silent |
+| probeB_H=55 | AE01/AE02 | `55 01 00 00 00 00 00` | `(no response)` | silent |
+| probeC_H=55 | AE01/AE02 | `03 55 00 00` | `(no response)` | silent |
+| probeA_H=AA | AE01/AE02 | `AA 00 00 00 00 00 00` | `(no response)` | silent |
+| probeB_H=AA | AE01/AE02 | `AA 01 00 00 00 00 00` | `(no response)` | silent |
+| probeC_H=AA | AE01/AE02 | `03 AA 00 00` | `(no response)` | silent |
+| probeA_H=A5 | AE01/AE02 | `A5 00 00 00 00 00 00` | `(no response)` | silent |
+| probeB_H=A5 | AE01/AE02 | `A5 01 00 00 00 00 00` | `(no response)` | silent |
+| probeC_H=A5 | AE01/AE02 | `03 A5 00 00` | `(no response)` | silent |
+| probeA_H=5A | AE01/AE02 | `5A 00 00 00 00 00 00` | `(no response)` | silent |
+| probeB_H=5A | AE01/AE02 | `5A 01 00 00 00 00 00` | `(no response)` | silent |
+| probeC_H=5A | AE01/AE02 | `03 5A 00 00` | `(no response)` | silent |
+| probeA_H=FF | AE01/AE02 | `FF 00 00 00 00 00 00` | `(no response)` | silent |
+| probeB_H=FF | AE01/AE02 | `FF 01 00 00 00 00 00` | `(no response)` | silent |
+| probeC_H=FF | AE01/AE02 | `03 FF 00 00` | `(no response)` | silent |
+| probeA_H=00 | FFA1/FFA2 | `00 00 00 00 00 00 00` | `FF` | standard ack |
+| probeB_H=00 | FFA1/FFA2 | `00 01 00 00 00 00 00` | `FF` | standard ack |
+| probeC_H=00 | FFA1/FFA2 | `03 00 00 00` | `03` | standard ack |
+| probeA_H=55 | FFA1/FFA2 | `55 00 00 00 00 00 00` | `FF` | standard ack |
+| probeB_H=55 | FFA1/FFA2 | `55 01 00 00 00 00 00` | `FF` | standard ack |
+| probeC_H=55 | FFA1/FFA2 | `03 55 00 00` | `03` | standard ack |
+| probeA_H=AA | FFA1/FFA2 | `AA 00 00 00 00 00 00` | `FF` | standard ack |
+| probeB_H=AA | FFA1/FFA2 | `AA 01 00 00 00 00 00` | `FF` | standard ack |
+| probeC_H=AA | FFA1/FFA2 | `03 AA 00 00` | `03` | standard ack |
+| probeA_H=A5 | FFA1/FFA2 | `A5 00 00 00 00 00 00` | `FF` | standard ack |
+| probeB_H=A5 | FFA1/FFA2 | `A5 01 00 00 00 00 00` | `FF` | standard ack |
+| probeC_H=A5 | FFA1/FFA2 | `03 A5 00 00` | `03` | standard ack |
+| probeA_H=5A | FFA1/FFA2 | `5A 00 00 00 00 00 00` | `FF` | standard ack |
+| probeB_H=5A | FFA1/FFA2 | `5A 01 00 00 00 00 00` | `FF` | standard ack |
+| probeC_H=5A | FFA1/FFA2 | `03 5A 00 00` | `03` | standard ack |
+| probeA_H=FF | FFA1/FFA2 | `FF 00 00 00 00 00 00` | `FF` | standard ack |
+| probeB_H=FF | FFA1/FFA2 | `FF 01 00 00 00 00 00` | `FF` | standard ack |
+| probeC_H=FF | FFA1/FFA2 | `03 FF 00 00` | `03` | standard ack |
+| opcode_00 | FFE1/FFE2 | `55 00 00 00 01 01 00` | `55 00 03 01 00 00 58 41 40 76 FA 6A D3 4E` | non-standard |
+| opcode_01 | FFE1/FFE2 | `55 01 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_02 | FFE1/FFE2 | `55 02 00 00 01 01 00` | `55 02 17 01 00 00 00` | non-standard |
+| opcode_03 | FFE1/FFE2 | `55 03 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_04 | FFE1/FFE2 | `55 04 00 00 01 01 00` | `55 04 00 00 01 01 00` | echo |
+| opcode_05 | FFE1/FFE2 | `55 05 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_06 | FFE1/FFE2 | `55 06 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_07 | FFE1/FFE2 | `55 07 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_08 | FFE1/FFE2 | `55 08 00 00 01 01 00` | `55 08 00 00 01 01 00` | echo |
+| opcode_09 | FFE1/FFE2 | `55 09 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0A | FFE1/FFE2 | `55 0A 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0B | FFE1/FFE2 | `55 0B 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0C | FFE1/FFE2 | `55 0C 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0D | FFE1/FFE2 | `55 0D 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0E | FFE1/FFE2 | `55 0E 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0F | FFE1/FFE2 | `55 0F 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_10 | FFE1/FFE2 | `55 10 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_11 | FFE1/FFE2 | `55 11 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_12 | FFE1/FFE2 | `55 12 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_13 | FFE1/FFE2 | `55 13 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_14 | FFE1/FFE2 | `55 14 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_15 | FFE1/FFE2 | `55 15 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_16 | FFE1/FFE2 | `55 16 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_17 | FFE1/FFE2 | `55 17 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_18 | FFE1/FFE2 | `55 18 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_19 | FFE1/FFE2 | `55 19 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1A | FFE1/FFE2 | `55 1A 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1B | FFE1/FFE2 | `55 1B 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1C | FFE1/FFE2 | `55 1C 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1D | FFE1/FFE2 | `55 1D 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1E | FFE1/FFE2 | `55 1E 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1F | FFE1/FFE2 | `55 1F 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_20 | FFE1/FFE2 | `55 20 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_00 | FFE1/FFE2 | `55 00 00 00 01 01 00` | `55 00 03 01 00 00 58 41 40 76 FA 6A D3 4E` | non-standard |
+| opcode_01 | FFE1/FFE2 | `55 01 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_02 | FFE1/FFE2 | `55 02 00 00 01 01 00` | `55 02 17 01 00 00 00` | non-standard |
+| opcode_03 | FFE1/FFE2 | `55 03 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_04 | FFE1/FFE2 | `55 04 00 00 01 01 00` | `55 04 00 00 01 01 00` | echo |
+| opcode_05 | FFE1/FFE2 | `55 05 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_06 | FFE1/FFE2 | `55 06 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_07 | FFE1/FFE2 | `55 07 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_08 | FFE1/FFE2 | `55 08 00 00 01 01 00` | `55 08 00 00 01 01 00` | echo |
+| opcode_09 | FFE1/FFE2 | `55 09 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0A | FFE1/FFE2 | `55 0A 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0B | FFE1/FFE2 | `55 0B 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0C | FFE1/FFE2 | `55 0C 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0D | FFE1/FFE2 | `55 0D 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0E | FFE1/FFE2 | `55 0E 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_0F | FFE1/FFE2 | `55 0F 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_10 | FFE1/FFE2 | `55 10 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_11 | FFE1/FFE2 | `55 11 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_12 | FFE1/FFE2 | `55 12 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_13 | FFE1/FFE2 | `55 13 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_14 | FFE1/FFE2 | `55 14 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_15 | FFE1/FFE2 | `55 15 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_16 | FFE1/FFE2 | `55 16 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_17 | FFE1/FFE2 | `55 17 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_18 | FFE1/FFE2 | `55 18 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_19 | FFE1/FFE2 | `55 19 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1A | FFE1/FFE2 | `55 1A 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1B | FFE1/FFE2 | `55 1B 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1C | FFE1/FFE2 | `55 1C 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1D | FFE1/FFE2 | `55 1D 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1E | FFE1/FFE2 | `55 1E 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_1F | FFE1/FFE2 | `55 1F 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| opcode_20 | FFE1/FFE2 | `55 20 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
+| burst_550400000000AA | FFE1/FFE2 | `55 04 00 00 00 00 AA` | `55 04 00 00 00 00 AA` | echo |
+| burst_550400000020AA | FFE1/FFE2 | `55 04 00 00 00 20 AA` | `55 04 00 00 00 20 AA` | echo |
+| burst_550400000040AA | FFE1/FFE2 | `55 04 00 00 00 40 AA` | `55 04 00 00 00 40 AA` | echo |
+| burst_550400000080AA | FFE1/FFE2 | `55 04 00 00 00 80 AA` | `55 04 00 00 00 80 AA` | echo |
+| burst_5504000000FFAA | FFE1/FFE2 | `55 04 00 00 00 FF AA` | `55 04 00 00 00 FF AA` | echo |
+| burst_550800000101FC | FFE1/FFE2 | `55 08 00 00 01 01 FC` | `55 08 00 00 01 01 FC` | echo |
+| burst_550800010000F9 | FFE1/FFE2 | `55 08 00 01 00 00 F9` | `55 08 00 01 00 00 F9` | echo |
+| burst_550800030101F0 | FFE1/FFE2 | `55 08 00 03 01 01 F0` | `55 08 00 03 01 01 F0` | echo |
+| burst_550800030105F4 | FFE1/FFE2 | `55 08 00 03 01 05 F4` | `55 08 00 03 01 05 F4` | echo |
+| burst_550300000101F5 | FFE1/FFE2 | `55 03 00 00 01 01 F5` | `55 FF 01 00 00 00 00` | non-standard |
+| burst_550200000000FC | FFE1/FFE2 | `55 02 00 00 00 00 FC` | `55 02 17 01 00 00 00` | non-standard |
+| fredorch_login | AE01/AE02 | `55 03 99 9C AA` | `(no response)` | silent |
+| fredorch_pat_00 | AE01/AE02 | `55 04 16 00 1A AA` | `(no response)` | silent |
+| fredorch_pat_01 | AE01/AE02 | `55 04 16 01 1B AA` | `(no response)` | silent |
+| fredorch_pat_02 | AE01/AE02 | `55 04 16 02 1C AA` | `(no response)` | silent |
+| fredorch_pat_03 | AE01/AE02 | `55 04 16 03 1D AA` | `(no response)` | silent |
+| fredorch_pat_04 | AE01/AE02 | `55 04 16 04 1E AA` | `(no response)` | silent |
+| fredorch_pat_05 | AE01/AE02 | `55 04 16 05 1F AA` | `(no response)` | silent |

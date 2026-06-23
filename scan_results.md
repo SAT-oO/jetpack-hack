@@ -1,0 +1,135 @@
+# BLE Scan Results
+
+- Brand filter: `Kaotik`
+- Product filter: `Jetpack`
+- Devices found: 127
+
+| tier | device_id | name | brand_match | rssi | score |
+| ---- | --------- | ---- | ----------- | ---- | ----- |
+| PRIMARY | `3006d789-0d8f-7433-40c0-e3421c918002` | The Jetpack | true | -44 | 120 |
+| CANDIDATE | `971fecbd-4899-21be-45f1-8a617384b795` | — | false | -40 | 40 |
+| CANDIDATE | `bb788ed7-ee8f-52e7-9112-bf3375cdf8a0` | — | false | -72 | 40 |
+| CANDIDATE | `ab8e3db2-98ac-701e-11c1-319f6f2a7bf3` | BT8932D | false | -75 | 40 |
+| CANDIDATE | `8397b887-79a0-77e6-e4c8-7e7c5c8d2480` | — | false | -77 | 40 |
+| CANDIDATE | `f7952a8d-7252-fad2-699e-a11bb667a5d5` | — | false | -85 | 40 |
+| CANDIDATE | `74aee1c4-22d6-a4c7-7310-8f3ec984ec14` | — | false | -86 | 40 |
+| CANDIDATE | `823c80ce-86b3-5361-fcda-472c87545bfd` | — | false | -86 | 40 |
+| CANDIDATE | `b3838051-e0c1-0d86-5fa8-12778834e6ef` | BYD BLE3 | false | -90 | 40 |
+| CANDIDATE | `d6efe440-5681-cc49-b573-5a88dc64c91d` | — | false | -97 | 40 |
+| LOW | `7a9e7645-94c5-dba1-5739-1e8c95b64efa` | njcuk.fitting.ad1204 | false | -71 | 10 |
+| LOW | `8cb0ccf2-3b7e-3bfe-52ae-057e97ed0352` | — | false | -75 | 10 |
+| LOW | `829a3702-fddb-5a3a-02d6-62ff03964c3f` | Xiaomi Smart Band 9 Pro 1923 | false | -77 | 10 |
+| LOW | `b31e95ae-954d-dd1a-69c6-bd2302a1fc8a` | — | false | -77 | 10 |
+| LOW | `ee1b39ff-cae7-f175-ba84-6c64e4ec7c17` | — | false | -78 | 10 |
+| LOW | `e1cb9a00-6beb-223d-12f8-163e2398f3e6` | — | false | -79 | 10 |
+| LOW | `a3439945-fc5b-21b5-ec42-52b8f7196f83` | — | false | -80 | 10 |
+| LOW | `44fba9d1-2b3a-407a-eb59-278072571b13` | — | false | -85 | 10 |
+| LOW | `bd2cc198-b23c-12de-0b99-effdc4546abe` | Q_BASH_D3397CD2B171 | false | -93 | 10 |
+| LOW | `f924b9b7-c0c2-e283-80d5-263c303e8d63` | — | false | -94 | 10 |
+| LOW | `5b72934e-1662-5a6e-e40b-c05995b90280` | — | false | — | 10 |
+| LOW | `94d1ffd3-c1e5-7456-230f-98807cc96cc7` | OpenFit by Shokz | false | — | 10 |
+| LOW | `e097304c-8066-6dc4-8e1b-95ec79ac6b8a` | — | false | — | 10 |
+| SKIP | `7324b437-433a-e2d0-0716-6e799a9411ea` | Tina’s AirPods #5 | false | -40 | -100 |
+| SKIP | `05699328-f3a1-2047-fec6-247dcf548110` | iPhone💦🚽 | false | -44 | -100 |
+| SKIP | `e51729e3-2ac8-2267-a32e-f04a56f24f1d` | — | false | -46 | -100 |
+| SKIP | `6a7d9764-28d6-c18b-ee86-3ad139c4f4a7` | Tina’s AirPods #5 | false | -52 | -100 |
+| SKIP | `f38f03d5-371e-a0b2-fb93-08eb4d0779ad` | — | false | -52 | -100 |
+| SKIP | `da452e5e-490b-f222-fc9a-729432195090` | — | false | -53 | -100 |
+| SKIP | `67ef67e0-61ea-a79c-bd9c-1e6911e19c9d` | — | false | -54 | -100 |
+| SKIP | `3369d955-e3b9-bc48-56d2-dc4ac2c48be6` | — | false | -55 | -100 |
+| SKIP | `46bcd335-9851-767b-b783-4c3c470e879d` | — | false | -58 | -100 |
+| SKIP | `af14356d-2b10-855f-f003-1276815dc5ce` | — | false | -59 | -100 |
+| SKIP | `87be3090-f9ca-e0ba-4275-d8f253d63cfd` | — | false | -59 | -100 |
+| SKIP | `273d7876-42c1-fa1d-b1cf-4363c2c48703` | — | false | -60 | -100 |
+| SKIP | `64772978-2d0b-4860-c78b-e05d678367cc` | — | false | -60 | -100 |
+| SKIP | `89e78401-dcb5-7ff9-ae58-1473421733c8` | — | false | -61 | -100 |
+| SKIP | `85506178-c2ef-5166-96ba-cd25c25249e3` | — | false | -62 | -100 |
+| SKIP | `b3752d84-d3a1-167c-65b9-2650d5685c0e` | — | false | -62 | -100 |
+| SKIP | `3ee87981-04f2-1a79-7e0b-43853e9074db` | — | false | -63 | -100 |
+| SKIP | `3fcbde32-c4d0-03cc-b2f5-5a471d126758` | — | false | -65 | -100 |
+| SKIP | `44cc7e8b-7503-9282-5cf1-2de310c3c595` | — | false | -66 | -100 |
+| SKIP | `e83da8b4-83aa-9e06-697c-c887020a99f8` | — | false | -67 | -100 |
+| SKIP | `a319da4c-10eb-77e0-f1dd-148d83b3eb44` | — | false | -67 | -100 |
+| SKIP | `75a92aeb-1b47-3c0a-975d-d9df300e3e3f` | — | false | -67 | -100 |
+| SKIP | `3bdb2ca4-c83d-c7eb-e6c0-3622af1e4fc1` | — | false | -67 | -100 |
+| SKIP | `05509d0b-0ef3-cb68-9bb7-93a65f6d7aac` | — | false | -68 | -100 |
+| SKIP | `c8e66522-7f87-8c8d-d721-58b8ee2ec27d` | — | false | -68 | -100 |
+| SKIP | `5b2d5362-4e58-0375-184b-8ada01603f7f` | — | false | -68 | -100 |
+| SKIP | `42bdbb68-a5b3-6a76-b259-a18e7b1e13e8` | — | false | -69 | -100 |
+| SKIP | `ec6c6733-df2f-af9b-ae1f-3e6568299edd` | — | false | -69 | -100 |
+| SKIP | `669adff3-7728-74d0-5716-c1710c09e7da` | — | false | -70 | -100 |
+| SKIP | `6c90b8c6-0f92-4957-16f5-e0b43091b04a` | — | false | -70 | -100 |
+| SKIP | `65f2cd5e-4a9b-b36c-8259-5bc1f9292620` | — | false | -71 | -100 |
+| SKIP | `8fba27e5-2110-8271-04f8-e583ea9f9198` | — | false | -71 | -100 |
+| SKIP | `e2dc56f5-7e7d-59b4-1c5a-d5fd1b2baf55` | — | false | -71 | -100 |
+| SKIP | `c17b4fe3-f744-7245-e78c-d4ce1c884baf` | — | false | -72 | -100 |
+| SKIP | `c68e873e-1658-8a5c-eaca-e73e6891b8f2` | — | false | -72 | -100 |
+| SKIP | `b2f84456-803b-3846-6004-b120e7f63649` | — | false | -73 | -100 |
+| SKIP | `e7e63d5e-3d27-02c1-0172-4b4951c9b1dd` | — | false | -73 | -100 |
+| SKIP | `c8d36d91-f331-c63e-f697-db58e7cff38c` | — | false | -74 | -100 |
+| SKIP | `fb9765d3-092a-f7c0-2570-af3339834b66` | — | false | -74 | -100 |
+| SKIP | `3a50b0f7-6063-379b-218e-4838697b294a` | — | false | -74 | -100 |
+| SKIP | `460f2bda-bd0a-80e4-c81f-3de025ecacc6` | — | false | -74 | -100 |
+| SKIP | `c1d8f578-82da-ecf0-93ab-8903f1d90825` | — | false | -75 | -100 |
+| SKIP | `81da0bfe-3449-a44c-7221-113b7684680a` | — | false | -76 | -100 |
+| SKIP | `a65056b2-c3ce-503e-8d02-d69d80f1a6d1` | — | false | -76 | -100 |
+| SKIP | `8ffb111e-b279-c5f3-63e1-81f4ffe5974e` | — | false | -77 | -100 |
+| SKIP | `f1b6062d-560d-1a7c-1648-4346f25bf28b` | — | false | -77 | -100 |
+| SKIP | `83b436df-1c26-3b4b-0d47-380c0ce24835` | — | false | -77 | -100 |
+| SKIP | `d8efe2c0-4ba9-ccd6-f066-3f660e4410e2` | — | false | -77 | -100 |
+| SKIP | `148b083d-8793-2075-fc4d-d739d9a87813` | — | false | -78 | -100 |
+| SKIP | `4e3c00f0-f2ff-dbc3-254e-e105f6a53cd4` | — | false | -78 | -100 |
+| SKIP | `9eacf2a7-4b43-cfcc-8e3b-4971b236f960` | — | false | -78 | -100 |
+| SKIP | `c0312aa3-fc04-3311-8c86-b9ffd4b7acf0` | — | false | -79 | -100 |
+| SKIP | `a9777985-2f27-79cf-232d-d29fac15b7e9` | — | false | -79 | -100 |
+| SKIP | `bd8a2b14-6a94-b87c-5595-ac1a659eed87` | — | false | -80 | -100 |
+| SKIP | `e29f2855-5028-a370-0870-6d8534e6217c` | — | false | -80 | -100 |
+| SKIP | `142201de-2cdc-91be-5ba5-8755da1247cf` | — | false | -80 | -100 |
+| SKIP | `e6b84e10-934c-d730-88c1-6229bf903d06` | — | false | -80 | -100 |
+| SKIP | `1ada944e-7f67-d1e2-62f3-2a47868f7554` | — | false | -80 | -100 |
+| SKIP | `51f1fb46-9587-d0f4-0216-982e3999e438` | — | false | -81 | -100 |
+| SKIP | `03496541-5668-06f1-bd59-b4fda4dcc8aa` | — | false | -81 | -100 |
+| SKIP | `006a5137-8458-5843-f0d8-e2c68a49f818` | — | false | -81 | -100 |
+| SKIP | `e5e1f806-a64c-25f8-2f07-14fcb67acf4a` | — | false | -81 | -100 |
+| SKIP | `5f4d5b13-4150-3b96-5784-e4eac053a280` | — | false | -82 | -100 |
+| SKIP | `6bc2c55b-3c92-58e2-f963-4a9036477393` | NGORuUyMggUikDMRq19rpKMcI | false | -82 | -100 |
+| SKIP | `bd42a8e4-cd2b-0ced-8c13-e42767242ff1` | NGNos6mM2HZtcbmwjUM96shQY | false | -83 | -100 |
+| SKIP | `1b4d9898-589f-7172-3177-aa3409f7577f` | — | false | -83 | -100 |
+| SKIP | `68a5313a-e79e-d662-9640-cdcdf2e2f94b` | — | false | -84 | -100 |
+| SKIP | `4aeb6d20-32ee-fa80-56b1-d1ccd13ddab4` | — | false | -84 | -100 |
+| SKIP | `7c7dfdc9-9268-fec1-5b4d-cae86b22a92f` | — | false | -84 | -100 |
+| SKIP | `c5025108-55a2-cb63-e514-d80155c51552` | — | false | -84 | -100 |
+| SKIP | `0b1c0130-b610-ec64-afa1-dab2a9c22581` | — | false | -85 | -100 |
+| SKIP | `18ba06b7-efc4-6c41-9e3a-13ef06dae29c` | — | false | -85 | -100 |
+| SKIP | `3dc8f758-c766-7ee7-c589-745d1131d076` | — | false | -85 | -100 |
+| SKIP | `01efa24a-5ed2-6d2c-2158-02a07e0ecea8` | — | false | -85 | -100 |
+| SKIP | `4eed466a-fe76-f8fc-0bf7-62d4497bec43` | — | false | -86 | -100 |
+| SKIP | `b94beb47-35c7-531e-6cca-3b4d00f45739` | — | false | -86 | -100 |
+| SKIP | `66ba9f8d-028c-41fe-a815-db2c9a8fffeb` | — | false | -86 | -100 |
+| SKIP | `7cd17da6-e834-936f-9db1-a65f72a42fff` | — | false | -86 | -100 |
+| SKIP | `c384c604-e097-e423-3668-8e8268b8041d` | — | false | -87 | -100 |
+| SKIP | `75764928-f7ab-bc66-9697-189da3eee689` | — | false | -87 | -100 |
+| SKIP | `d60efc19-591d-a7c3-d273-44edb87384ed` | — | false | -87 | -100 |
+| SKIP | `ef113544-0164-04ea-75fb-1ed807efdddb` | — | false | -87 | -100 |
+| SKIP | `a9cbd417-6f51-92d2-5e70-210aadf01f5d` | — | false | -88 | -100 |
+| SKIP | `266ddcb1-7d9c-26a7-e914-e1c46ab9d67a` | — | false | -88 | -100 |
+| SKIP | `1df4673f-1ef8-6db6-5993-a680b5b2dc8a` | — | false | -88 | -100 |
+| SKIP | `83315119-3a77-af98-4dff-63ada6f5db7a` | — | false | -88 | -100 |
+| SKIP | `959ac149-2401-fb23-ec8f-dca579ad67cf` | — | false | -88 | -100 |
+| SKIP | `f44f8917-57d2-ca09-c5e7-7ac52e1edf38` | I+7(:@M/H7(&')+. | false | -88 | -100 |
+| SKIP | `cc87e3ac-6f37-89bf-c1bc-30603941f2ca` | — | false | -88 | -100 |
+| SKIP | `c6b50b38-8f26-fdf3-ce5f-707c3b3c02b1` | — | false | -89 | -100 |
+| SKIP | `c0fb742b-5d74-dbfe-75b0-32f4187e3f8e` | — | false | -89 | -100 |
+| SKIP | `7622e4b7-4a3f-a519-e0ae-b8921ea44cb2` | — | false | -89 | -100 |
+| SKIP | `666c0dae-d92b-ee0d-c8a2-acdd25852472` | — | false | -90 | -100 |
+| SKIP | `5a2adea8-295d-3da0-48fd-6b6f6236ac63` | — | false | -90 | -100 |
+| SKIP | `cff61570-9062-3682-c5eb-2652f120db86` | S173c826ad721d230C | false | -90 | -100 |
+| SKIP | `002a2948-6dca-6e8b-3f19-17fe3729f714` | — | false | -91 | -100 |
+| SKIP | `db8d31e4-bf78-a222-78b3-6186b49a37ce` | — | false | -91 | -100 |
+| SKIP | `797c6fff-1000-1b88-9910-a26b595adc05` | — | false | -91 | -100 |
+| SKIP | `aa35df0c-2511-2022-edb1-3a8c72e4f552` | — | false | -92 | -100 |
+| SKIP | `79f9fc56-22a9-e5db-cd65-b0fa3677e889` | — | false | -92 | -100 |
+| SKIP | `5cf25ea5-1fdb-1490-47ab-11dbc008025c` | — | false | -92 | -100 |
+| SKIP | `1105c002-bc9d-c4a2-118e-102acaa09747` | — | false | -93 | -100 |
+| SKIP | `dadf5626-2ca0-e487-c241-d95518b36f63` | — | false | -93 | -100 |
+| SKIP | `ddf5b90b-a2a9-2ccd-fe10-1591c8e756b7` | — | false | -95 | -100 |

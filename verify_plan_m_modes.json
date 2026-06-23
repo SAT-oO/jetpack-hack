@@ -1,0 +1,55 @@
+{
+  "handshake": false,
+  "channel": "ffe1",
+  "sustain_ms": 50,
+  "checkpoints": [
+    {
+      "id": "m2_t5",
+      "label": "Preset mode M2 travel 5",
+      "expect": "Preset pattern 2 — distinct rhythm from M1.",
+      "burst_hex": "55 08 00 03 02 05 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m4_t5",
+      "label": "Preset mode M4 travel 5",
+      "expect": "Preset pattern 4 — distinct rhythm from M2/M3.",
+      "burst_hex": "55 08 00 03 04 05 F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m6_t5",
+      "label": "Preset mode M6 travel 5",
+      "expect": "Preset pattern 6 — distinct rhythm from M5.",
+      "burst_hex": "55 08 00 03 06 05 F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m7_t5",
+      "label": "Preset mode M7 travel 5",
+      "expect": "Preset pattern 7 — distinct from M6.",
+      "burst_hex": "55 08 00 03 07 05 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m8_t5",
+      "label": "Preset mode M8 travel 5",
+      "expect": "Preset pattern 8 — distinct from M7.",
+      "burst_hex": "55 08 00 03 08 05 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "stretch_stop",
+      "label": "Stretch/M stop",
+      "expect": "All stretch/M motion stops.",
+      "burst_hex": "55 08 00 01 00 00 F9",
+      "burst_seconds": 1,
+      "one_shot": true
+    }
+  ]
+}

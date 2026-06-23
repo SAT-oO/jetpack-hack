@@ -1,0 +1,127 @@
+{
+  "handshake": false,
+  "channel": "ffe1",
+  "sustain_ms": 50,
+  "checkpoints": [
+    {
+      "id": "battery_query",
+      "label": "Battery query",
+      "expect": "No movement. Battery/status may update if visible.",
+      "burst_hex": "55 02 00 00 00 00 FC",
+      "burst_seconds": 1,
+      "one_shot": true
+    },
+    {
+      "id": "boost_stop",
+      "label": "Boost stop",
+      "expect": "No thrust; holds position.",
+      "burst_hex": "55 04 00 00 00 00 AA",
+      "burst_seconds": 1,
+      "one_shot": true
+    },
+    {
+      "id": "boost_40",
+      "label": "Boost scale 0x40",
+      "expect": "Rhythmic up/down thrust, moderate depth (video-sync style).",
+      "burst_hex": "55 04 00 00 00 40 AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA"
+    },
+    {
+      "id": "boost_ff",
+      "label": "Boost scale 0xFF",
+      "expect": "Stronger/faster thrust than 0x40.",
+      "burst_hex": "55 04 00 00 00 FF AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA"
+    },
+    {
+      "id": "stretch_l1",
+      "label": "Direct stretch level 1",
+      "expect": "Shallow stroke position (level 1 of 5).",
+      "burst_hex": "55 08 00 00 01 01 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "stretch_l5",
+      "label": "Direct stretch level 5",
+      "expect": "Deeper stroke position than level 1.",
+      "burst_hex": "55 08 00 00 05 05 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m1_t5",
+      "label": "Preset mode M1 travel 5",
+      "expect": "Preset pattern 1 (e.g. Fast) at max travel.",
+      "burst_hex": "55 08 00 03 01 05 F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m3_t3",
+      "label": "Preset mode M3 travel 3",
+      "expect": "Preset pattern 3 — distinct rhythm from M1.",
+      "burst_hex": "55 08 00 03 03 03 F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m5_t5",
+      "label": "Preset mode M5 travel 5",
+      "expect": "Preset pattern 5 — distinct from M1/M3.",
+      "burst_hex": "55 08 00 03 05 05 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m2_t5",
+      "label": "Preset mode M2 travel 5",
+      "expect": "Preset pattern 2 — distinct rhythm from M1.",
+      "burst_hex": "55 08 00 03 02 05 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m4_t5",
+      "label": "Preset mode M4 travel 5",
+      "expect": "Preset pattern 4 — distinct rhythm from M3.",
+      "burst_hex": "55 08 00 03 04 05 F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m6_t5",
+      "label": "Preset mode M6 travel 5",
+      "expect": "Preset pattern 6 — distinct rhythm from M5.",
+      "burst_hex": "55 08 00 03 06 05 F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m7_t5",
+      "label": "Preset mode M7 travel 5",
+      "expect": "Preset pattern 7 — distinct from M6.",
+      "burst_hex": "55 08 00 03 07 05 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "m8_t5",
+      "label": "Preset mode M8 travel 5",
+      "expect": "Preset pattern 8 — distinct from M7.",
+      "burst_hex": "55 08 00 03 08 05 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9"
+    },
+    {
+      "id": "stretch_stop",
+      "label": "Stretch/M stop",
+      "expect": "All stretch/M motion stops.",
+      "burst_hex": "55 08 00 01 00 00 F9",
+      "burst_seconds": 1,
+      "one_shot": true
+    }
+  ]
+}
