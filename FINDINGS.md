@@ -1,6 +1,6 @@
-# Kaotik The Jetpack — Verified BLE Commands
+# Kaotik Lab The Jetpack — Verified BLE Commands
 
-Document only commands confirmed by human verification (`verify_results.md`). Modes M2, M4, M6, M7, M8 are probed (echo) but not yet verified — run `verify_plan_m_modes.json`.
+Commands listed only from `verify_results.md` **success** rows. Candidates came from `ble_sweep` echo/non-standard hits; hex was human-confirmed with `ble_verify`.
 
 ## Device Info
 
@@ -8,41 +8,19 @@ Document only commands confirmed by human verification (`verify_results.md`). Mo
 | --- | --- |
 | Brand | Kaotik Lab |
 | Product | The Jetpack |
-| Internal model | HF470 |
-| Product code | HF470A |
-| Official app | KooSync |
-
-## BLE UUID
-
-| Role | UUID |
-| --- | --- |
-| Service | `0000ffe0-0000-1000-8000-00805f9b34fb` |
-| Write | `0000ffe1-0000-1000-8000-00805f9b34fb` |
-| Notify | `0000ffe2-0000-1000-8000-00805f9b34fb` |
 
 ## Frame Format
-
-Most commands are 7 bytes:
 
 ```text
 55 <cmd> <p0> <p1> <p2> <p3> <tail>
 ```
 
-| Command family | Tail rule |
-| --- | --- |
-| `0x08` stretch / M-modes | CRC-8 C2 over bytes 0–5 |
-| `0x04` boost (video-sync thrust) | Fixed `AA` |
-| `0x02` battery query | CRC-8 C2 |
-
-CRC-8 C2 parameters:
-
-```text
-poly   = 0xF0
-init   = 0xFF
-xorout = 0xFF
-refin  = false
-refout = true
-```
+| Opcode | Tail (from sweep) | Verified count |
+| --- | --- | --- |
+| `0x02` | CRC-8 C2 | 1 |
+| `0x04` | fixed AA | 7 |
+| `0x08` | CRC-8 C2 | 35 |
+| `0xA0` | CRC-8 C2 | 1 |
 
 ---
 
@@ -54,19 +32,17 @@ refout = true
 55 02 00 00 00 00 FC
 ```
 
-### Response example
+### Response (sweep capture)
 
 ```text
-55 02 17 01 00 00 00
+55 02 10 01 00 00 00
 ```
 
-Byte 2 (`0x17` in sample) is state-of-charge indicator; no motor movement.
+No movement. Battery/status may update if visible.
 
 ---
 
 ## Boost (video-sync thrust)
-
-Continuous rhythmic thrust; scale byte sets depth/speed. Sustain ~50 ms between frames.
 
 ### Command format
 
@@ -74,57 +50,49 @@ Continuous rhythmic thrust; scale byte sets depth/speed. Sustain ~50 ms between 
 55 04 00 00 00 <scale> AA
 ```
 
-| Field | Meaning |
-| --- | --- |
-| `<scale>` | `0x00` = stop; `0x01`–`0xFF` = thrust intensity |
-
 ### Verified commands
 
 | key | Command | Effect |
 | --- | --- | --- |
-| stop | `55 04 00 00 00 00 AA` | No thrust; holds position |
-| moderate | `55 04 00 00 00 40 AA` | Rhythmic thrust, moderate depth |
-| max | `55 04 00 00 00 FF AA` | Stronger/faster than `0x40` |
+| boost_stop | `55 04 00 00 00 00 AA` | No thrust; holds position. |
+| boost_20 | `55 04 00 00 00 20 AA` | Stable rhythmic thrust, minimum effective depth |
+| boost_40 | `55 04 00 00 00 40 AA` | Rhythmic thrust, moderate depth |
+| boost_80 | `55 04 00 00 00 80 AA` | Medium stroke depth |
+| boost_cc | `55 04 00 00 00 CC AA` | Koosync Boost capture common depth |
+| boost_ff | `55 04 00 00 00 FF AA` | Maximum stroke depth / speed |
 
 ### Confirmed behavior
 
-- Frames must be repeated ~50 ms to sustain motion
-- Stop frame halts boost thrust immediately
+- Single non-zero frame may sustain motion without 50 ms repeat; stop frame halts.
 
 ---
 
 ## Direct stretch (stroke position)
 
-Sets stroke length/position without a preset rhythm pattern (`p1 = 0x00`).
-
 ### Command format
 
 ```text
-55 08 00 00 <level> <travel> <CRC>
+55 08 00 00 <A> <B> <CRC>
 ```
-
-| Field | Meaning |
-| --- | --- |
-| `<level>` | Stroke position level `0x01`–`0x05` |
-| `<travel>` | Travel depth `0x01`–`0x05` (often matches level) |
 
 ### Verified commands
 
 | key | Command | Effect |
 | --- | --- | --- |
-| level 1 | `55 08 00 00 01 01 FC` | Shallow stroke (level 1 of 5) |
-| level 5 | `55 08 00 00 05 05 F7` | Deeper stroke than level 1 |
-
-### Confirmed behavior
-
-- Distinct physical positions between level 1 and level 5
-- Uses CRC tail, not `AA`
+| stretch_l1 | `55 08 00 00 01 01 FC` | Shallow stroke position (level 1). |
+| stretch_l5 | `55 08 00 00 04 03 F9` | Mid/deep stroke — distinct from level 1. |
+| stretch_l10 | `55 08 00 00 08 0A F3` | Deepest direct-stretch position. |
+| stretch_l2 | `55 08 00 00 01 02 FB` | Level 2 stroke |
+| stretch_l3 | `55 08 00 00 02 03 F7` | Level 3 stroke |
+| stretch_l4 | `55 08 00 00 03 04 F6` | Level 4 stroke |
+| stretch_l6 | `55 08 00 00 05 06 F0` | Level 6 stroke |
+| stretch_l7 | `55 08 00 00 06 07 FC` | Level 7 stroke |
+| stretch_l8 | `55 08 00 00 07 08 FF` | Level 8 stroke |
+| stretch_l9 | `55 08 00 00 08 09 F4` | Level 9 stroke |
 
 ---
 
-## M-mode presets (thrust patterns)
-
-Eight preset thrust rhythms (`p1 = 0x03`, mode byte `p2 = 0x01`–`0x08`, travel `p3 = 0x01`–`0x05`). **M2, M4, M6, M7, M8 probed only — pending verify.**
+## M-mode presets
 
 ### Command format
 
@@ -132,44 +100,76 @@ Eight preset thrust rhythms (`p1 = 0x03`, mode byte `p2 = 0x01`–`0x08`, travel
 55 08 00 03 <mode> <travel> <CRC>
 ```
 
-| Field | Meaning |
-| --- | --- |
-| `<mode>` | Preset pattern M1–M8 (`0x01`–`0x08`) |
-| `<travel>` | Stroke travel `0x01`–`0x05` |
-
 ### Verified commands
 
 | key | Command | Effect |
 | --- | --- | --- |
-| M1 travel 5 | `55 08 00 03 01 05 F4` | Preset pattern 1 at max travel |
-| M3 travel 3 | `55 08 00 03 03 03 F9` | Preset pattern 3, distinct from M1 |
-| M5 travel 5 | `55 08 00 03 05 05 FB` | Preset pattern 5, distinct from M1/M3 |
-| stop | `55 08 00 01 00 00 F9` | All stretch/M motion stops |
+| m1_t5 | `55 08 00 03 01 05 F4` | Preset pattern M1 / Fast — distinct rhythmic thrust. |
+| m2_t5 | `55 08 00 03 02 05 F7` | Preset pattern M2 / Intense — distinct rhythmic thrust. |
+| m3_t5 | `55 08 00 03 03 05 F5` | Preset pattern M3 / Teaser — distinct rhythmic thrust. |
+| m4_t5 | `55 08 00 03 04 05 F9` | Preset pattern M4 / Training — distinct rhythmic thrust. |
+| m5_t5 | `55 08 00 03 05 05 FB` | Preset pattern M5 / Thrill Seeking — distinct rhythmic thrust. |
+| m6_t5 | `55 08 00 03 06 05 F8` | Preset pattern M6 / Charming — distinct rhythmic thrust. |
+| m7_t5 | `55 08 00 03 07 05 FA` | Preset pattern M7 / Seduction — distinct rhythmic thrust. |
+| m8_t5 | `55 08 00 03 08 05 FE` | Preset pattern M8 / Playful — distinct rhythmic thrust. |
+| m1_t1 | `55 08 00 03 01 01 F0` | M1 / Fast at travel 0x01. |
+| m1_ta | `55 08 00 03 01 0A F5` | M1 / Fast at travel 0x0a. |
+| m2_t1 | `55 08 00 03 02 01 F3` | M2 / Intense at travel 0x01. |
+| m2_ta | `55 08 00 03 02 0A F6` | M2 / Intense at travel 0x0a. |
+| m3_t1 | `55 08 00 03 03 01 F1` | M3 / Teaser at travel 0x01. |
+| m3_ta | `55 08 00 03 03 0A F4` | M3 / Teaser at travel 0x0a. |
+| m4_t1 | `55 08 00 03 04 01 FD` | M4 / Training at travel 0x01. |
+| m4_ta | `55 08 00 03 04 0A F8` | M4 / Training at travel 0x0a. |
+| m5_t1 | `55 08 00 03 05 01 FF` | M5 / Thrill Seeking at travel 0x01. |
+| m5_ta | `55 08 00 03 05 0A FA` | M5 / Thrill Seeking at travel 0x0a. |
+| m6_t1 | `55 08 00 03 06 01 FC` | M6 / Charming at travel 0x01. |
+| m6_ta | `55 08 00 03 06 0A F9` | M6 / Charming at travel 0x0a. |
+| m7_t1 | `55 08 00 03 07 01 FE` | M7 / Seduction at travel 0x01. |
+| m7_ta | `55 08 00 03 07 0A FB` | M7 / Seduction at travel 0x0a. |
+| m8_t1 | `55 08 00 03 08 01 FA` | M8 / Playful at travel 0x01. |
+| m8_ta | `55 08 00 03 08 0A FF` | M8 / Playful at travel 0x0a. |
 
-### Probe candidates (echo — not verified)
+---
 
-| key | Command | Notes |
-| --- | --- | --- |
-| M2 travel 5 | `55 08 00 03 02 05 F7` | Echo on FFE1 |
-| M4 travel 5 | `55 08 00 03 04 05 F9` | Echo on FFE1 |
-| M6 travel 5 | `55 08 00 03 06 05 F8` | Echo on FFE1 |
-| M7 travel 5 | `55 08 00 03 07 05 FA` | Echo on FFE1 |
-| M8 travel 5 | `55 08 00 03 08 05 FE` | Echo on FFE1 |
+## Status sync / query
 
-### Confirmed behavior
+### Query
 
-- M1, M3, M5 produce distinct rhythmic patterns
-- Stop frame `55 08 00 01 00 00 F9` halts M-mode motion
-- Sustain ~50 ms between frames during bursts
+```text
+55 A0 00 00 00 00 FB
+```
+
+### Response (sweep capture)
+
+```text
+55 A0 01 0A 00 00 00
+```
+
+No movement. Device returns status payload on notify.
+
+---
+
+## Stop command
+
+```text
+55 08 00 01 00 00 F9
+```
+
+All stretch/M motion stops.
+
+---
+
+## Boost latch behavior
+
+- Single 0x40 frame sustains motion without 50 ms repeat; stop frame halts.
 
 ---
 
 ## Implementation Notes
 
-| Use case | Family | Format |
-| --- | --- | --- |
-| Video sync | Boost | `55 04 00 00 00 <scale> AA` |
-| Stroke length | Direct stretch | `55 08 00 00 <level> <travel> CRC` |
-| Preset M1–M8 | M-mode | `55 08 00 03 <mode> <travel> CRC` |
-| Stop M/stretch | Stop | `55 08 00 01 00 00 F9` |
-| Battery | Query | `55 02 00 00 00 00 FC` |
+| Use case | Format |
+| --- | --- |
+| Video sync | `55 04 00 00 00 00 AA` |
+| Direct stretch | `55 08 00 00 01 01 FC` |
+| M-mode presets | `55 08 00 03 01 05 F4` |
+| Stop | `55 08 00 01 00 00 F9` |

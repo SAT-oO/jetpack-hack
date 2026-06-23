@@ -12,6 +12,8 @@
 //!   q = quit early, save results so far
 
 use anyhow::{Context, Result};
+use ble_hack_skill::discover;
+use ble_hack_skill::verify;
 use ble_hack_skill::session::{
     adapter, connect, send_and_wait, send_burst, send_handshake, spaced_hex, ChannelPair,
 };
@@ -100,6 +102,8 @@ enum PromptChoice {
 async fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
     let workdir = workdir::workdir_from_args(&args);
+    let (brand, product) = workdir::brand_product_from_args(&workdir, &args);
+    let findings_auto = !args.iter().any(|a| a == "--no-findings");
     let device = workdir::resolve_device(&workdir, arg_value(&args, "--device").as_deref())?;
     let plan_path = workdir::resolve_plan_path(&workdir, arg_value(&args, "--plan").as_deref());
     let output = workdir::resolve_output_path(&workdir, arg_value(&args, "--output").as_deref());
@@ -227,7 +231,25 @@ async fn main() -> Result<()> {
     fs::write(&output, &md)?;
     print_summary(&results);
     println!("\nWrote {}", output.display());
-    println!("Only SUCCESS rows may be copied into FINDINGS.md.");
+
+    let ok = results.iter().filter(|r| r.verdict == Verdict::Success).count();
+    if ok > 0 && findings_auto {
+        let summary = verify::VerifySummary::from_markdown(&md);
+        let sweep_md = fs::read_to_string(workdir.join("sweep_results.md")).ok();
+        let findings_path = workdir.join("FINDINGS.md");
+        let body = discover::render_findings_strict(&brand, &product, &[summary], sweep_md.as_deref());
+        fs::write(&findings_path, body)?;
+        println!("Wrote {} ({} success rows)", findings_path.display(), ok);
+    } else if ok > 0 {
+        println!("Only SUCCESS rows may be copied into FINDINGS.md.");
+        println!(
+            "Regenerate: cargo run -p ble-hack-skill --bin ble_findings -- --workdir {} --brand \"{}\"",
+            workdir.display(),
+            brand
+        );
+    } else {
+        println!("No SUCCESS rows — FINDINGS.md not updated.");
+    }
 
     Ok(())
 }

@@ -7,6 +7,7 @@
 //!   cargo run --bin ble_probe -- --device UUID --channel ffe1 --burst "55 03 00 00 01 01 00" --seconds 3
 
 use anyhow::{Context, Result};
+use ble_hack_skill::crc::{frame_with_aa, frame_with_crc};
 use ble_hack_skill::gatt;
 use ble_hack_skill::session::{
     adapter, classify_response, connect, discover_channels_on_device, listen_notifications,
@@ -214,11 +215,60 @@ async fn run_auto(device: &str) -> Result<Vec<ProbeRow>> {
     rows.extend(run_opcode_sweep_session(&session, &mut notifications, &channel, 0x55, false).await?);
     rows.extend(run_opcode_sweep_session(&session, &mut notifications, &channel, 0x55, true).await?);
 
+    println!("\n=== Phase 4: tail-family probes on hot opcodes ===\n");
+    rows.extend(run_tail_family_probe(&session, &mut notifications, &channel).await?);
+
     session.peripheral.disconnect().await?;
 
     println!("\n=== Phase 5: AE01 Fredorch-style pattern sweep ===\n");
     rows.extend(run_fredorch_sweep(device).await.unwrap_or_default());
 
+    Ok(rows)
+}
+
+async fn run_tail_family_probe(
+    session: &Session,
+    notifications: &mut (impl StreamExt<Item = btleplug::api::ValueNotification> + Unpin),
+    channel: &ChannelPair,
+) -> Result<Vec<ProbeRow>> {
+    let mut rows = Vec::new();
+    let samples: [(&str, [u8; 7]); 6] = [
+        (
+            "tail_crc_query_02",
+            frame_with_crc([0x55, 0x02, 0x00, 0x00, 0x00, 0x00]),
+        ),
+        (
+            "tail_crc_query_A0",
+            frame_with_crc([0x55, 0xA0, 0x00, 0x00, 0x00, 0x00]),
+        ),
+        (
+            "tail_aa_boost_40",
+            frame_with_aa([0x55, 0x04, 0x00, 0x00, 0x00, 0x40]),
+        ),
+        (
+            "tail_crc_stretch",
+            frame_with_crc([0x55, 0x08, 0x00, 0x00, 0x01, 0x01]),
+        ),
+        (
+            "tail_crc_mmode",
+            frame_with_crc([0x55, 0x08, 0x00, 0x03, 0x01, 0x05]),
+        ),
+        (
+            "tail_crc_stop",
+            frame_with_crc([0x55, 0x08, 0x00, 0x01, 0x00, 0x00]),
+        ),
+    ];
+
+    for (label, frame) in samples {
+        let row = probe_frame(session, notifications, channel, label, &frame).await?;
+        if row.class != "silent" {
+            println!(
+                "  {}: {} -> {} [{}]",
+                label, row.sent, row.response, row.class
+            );
+        }
+        rows.push(row);
+    }
     Ok(rows)
 }
 

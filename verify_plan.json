@@ -1,119 +1,1057 @@
 {
   "handshake": false,
-  "channel": "ffe1",
   "sustain_ms": 50,
+  "channel": "ffe1",
   "checkpoints": [
     {
-      "id": "battery_query",
-      "label": "Battery query",
-      "expect": "No movement. Battery/status may update if visible.",
-      "burst_hex": "55 02 00 00 00 00 FC",
-      "burst_seconds": 1,
-      "one_shot": true
+      "id": "op00_z_01_01",
+      "label": "op00_z_01_01",
+      "expect": "Physical effect distinct from stop.",
+      "burst_hex": "55 00 00 00 01 01 00",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "boost_stop",
-      "label": "Boost stop",
+      "id": "op04_scale_00",
+      "label": "op04_scale_00",
       "expect": "No thrust; holds position.",
       "burst_hex": "55 04 00 00 00 00 AA",
       "burst_seconds": 1,
       "one_shot": true
     },
     {
-      "id": "boost_40",
-      "label": "Boost scale 0x40",
-      "expect": "Rhythmic up/down thrust, moderate depth (video-sync style).",
+      "id": "op04_scale_20",
+      "label": "op04_scale_20",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
+      "burst_hex": "55 04 00 00 00 20 AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
+    },
+    {
+      "id": "op04_scale_40",
+      "label": "op04_scale_40",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
       "burst_hex": "55 04 00 00 00 40 AA",
       "burst_seconds": 4,
-      "stop_hex": "55 04 00 00 00 00 AA"
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
     },
     {
-      "id": "boost_ff",
-      "label": "Boost scale 0xFF",
-      "expect": "Stronger/faster thrust than 0x40.",
+      "id": "op04_scale_60",
+      "label": "op04_scale_60",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
+      "burst_hex": "55 04 00 00 00 60 AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
+    },
+    {
+      "id": "op04_scale_80",
+      "label": "op04_scale_80",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
+      "burst_hex": "55 04 00 00 00 80 AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
+    },
+    {
+      "id": "op04_scale_a0",
+      "label": "op04_scale_A0",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
+      "burst_hex": "55 04 00 00 00 A0 AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
+    },
+    {
+      "id": "op04_scale_c0",
+      "label": "op04_scale_C0",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
+      "burst_hex": "55 04 00 00 00 C0 AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
+    },
+    {
+      "id": "op04_scale_cc",
+      "label": "op04_scale_CC",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
+      "burst_hex": "55 04 00 00 00 CC AA",
+      "burst_seconds": 4,
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
+    },
+    {
+      "id": "op04_scale_ff",
+      "label": "op04_scale_FF",
+      "expect": "Rhythmic thrust or depth change distinct from stop.",
       "burst_hex": "55 04 00 00 00 FF AA",
       "burst_seconds": 4,
-      "stop_hex": "55 04 00 00 00 00 AA"
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": false
     },
     {
-      "id": "stretch_l1",
-      "label": "Direct stretch level 1",
-      "expect": "Shallow stroke position (level 1 of 5).",
-      "burst_hex": "55 08 00 00 01 01 FC",
+      "id": "op08_m1_t1",
+      "label": "op08_m1_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 01 01 F0",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "stretch_l5",
-      "label": "Direct stretch level 5",
-      "expect": "Deeper stroke position than level 1.",
-      "burst_hex": "55 08 00 00 05 05 F7",
-      "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
-    },
-    {
-      "id": "m1_t5",
-      "label": "Preset mode M1 travel 5",
-      "expect": "Preset pattern 1 (e.g. Fast) at max travel.",
+      "id": "op08_m1_t5",
+      "label": "op08_m1_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
       "burst_hex": "55 08 00 03 01 05 F4",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "m3_t3",
-      "label": "Preset mode M3 travel 3",
-      "expect": "Preset pattern 3 — distinct rhythm from M1.",
-      "burst_hex": "55 08 00 03 03 03 F9",
+      "id": "op08_m1_ta",
+      "label": "op08_m1_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 01 0A F5",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "m5_t5",
-      "label": "Preset mode M5 travel 5",
-      "expect": "Preset pattern 5 — distinct from M1/M3.",
-      "burst_hex": "55 08 00 03 05 05 FB",
+      "id": "op08_m2_t1",
+      "label": "op08_m2_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 02 01 F3",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "m2_t5",
-      "label": "Preset mode M2 travel 5",
-      "expect": "Preset pattern 2 — distinct rhythm from M1.",
+      "id": "op08_m2_t5",
+      "label": "op08_m2_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
       "burst_hex": "55 08 00 03 02 05 F7",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "m4_t5",
-      "label": "Preset mode M4 travel 5",
-      "expect": "Preset pattern 4 — distinct rhythm from M3.",
+      "id": "op08_m2_ta",
+      "label": "op08_m2_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 02 0A F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m3_t1",
+      "label": "op08_m3_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 03 01 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m3_t5",
+      "label": "op08_m3_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 03 05 F5",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m3_ta",
+      "label": "op08_m3_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 03 0A F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m4_t1",
+      "label": "op08_m4_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 04 01 FD",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m4_t5",
+      "label": "op08_m4_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
       "burst_hex": "55 08 00 03 04 05 F9",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "m6_t5",
-      "label": "Preset mode M6 travel 5",
-      "expect": "Preset pattern 6 — distinct rhythm from M5.",
+      "id": "op08_m4_ta",
+      "label": "op08_m4_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 04 0A F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m5_t1",
+      "label": "op08_m5_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 05 01 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m5_t5",
+      "label": "op08_m5_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 05 05 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m5_ta",
+      "label": "op08_m5_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 05 0A FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m6_t1",
+      "label": "op08_m6_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 06 01 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m6_t5",
+      "label": "op08_m6_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
       "burst_hex": "55 08 00 03 06 05 F8",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "m7_t5",
-      "label": "Preset mode M7 travel 5",
-      "expect": "Preset pattern 7 — distinct from M6.",
+      "id": "op08_m6_ta",
+      "label": "op08_m6_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 06 0A F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m7_t1",
+      "label": "op08_m7_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 07 01 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m7_t5",
+      "label": "op08_m7_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
       "burst_hex": "55 08 00 03 07 05 FA",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
     },
     {
-      "id": "m8_t5",
-      "label": "Preset mode M8 travel 5",
-      "expect": "Preset pattern 8 — distinct from M7.",
+      "id": "op08_m7_ta",
+      "label": "op08_m7_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 07 0A FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m8_t1",
+      "label": "op08_m8_t1",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 08 01 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m8_t5",
+      "label": "op08_m8_t5",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
       "burst_hex": "55 08 00 03 08 05 FE",
       "burst_seconds": 4,
-      "stop_hex": "55 08 00 01 00 00 F9"
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_m8_ta",
+      "label": "op08_m8_tA",
+      "expect": "Preset rhythmic pattern distinct from other modes.",
+      "burst_hex": "55 08 00 03 08 0A FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_01",
+      "label": "op08_p0_00_01_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 01 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_02",
+      "label": "op08_p0_00_01_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 02 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_03",
+      "label": "op08_p0_00_01_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 03 F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_04",
+      "label": "op08_p0_00_01_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 04 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_05",
+      "label": "op08_p0_00_01_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 05 F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_06",
+      "label": "op08_p0_00_01_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 06 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_07",
+      "label": "op08_p0_00_01_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 07 F0",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_08",
+      "label": "op08_p0_00_01_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 08 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_09",
+      "label": "op08_p0_00_01_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 09 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_01_0a",
+      "label": "op08_p0_00_01_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 01 0A F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_01",
+      "label": "op08_p0_00_02_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 01 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_02",
+      "label": "op08_p0_00_02_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 02 F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_03",
+      "label": "op08_p0_00_02_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 03 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_04",
+      "label": "op08_p0_00_02_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 04 F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_05",
+      "label": "op08_p0_00_02_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 05 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_06",
+      "label": "op08_p0_00_02_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 06 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_07",
+      "label": "op08_p0_00_02_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 07 F3",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_08",
+      "label": "op08_p0_00_02_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 08 F2",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_09",
+      "label": "op08_p0_00_02_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 09 FD",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_02_0a",
+      "label": "op08_p0_00_02_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 02 0A FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_01",
+      "label": "op08_p0_00_03_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 01 FD",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_02",
+      "label": "op08_p0_00_03_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 02 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_03",
+      "label": "op08_p0_00_03_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 03 F5",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_04",
+      "label": "op08_p0_00_03_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 04 F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_05",
+      "label": "op08_p0_00_03_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 05 F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_06",
+      "label": "op08_p0_00_03_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 06 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_07",
+      "label": "op08_p0_00_03_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 07 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_08",
+      "label": "op08_p0_00_03_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 08 F0",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_09",
+      "label": "op08_p0_00_03_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 09 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_03_0a",
+      "label": "op08_p0_00_03_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 03 0A F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_01",
+      "label": "op08_p0_00_04_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 01 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_02",
+      "label": "op08_p0_00_04_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 02 F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_03",
+      "label": "op08_p0_00_04_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 03 F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_04",
+      "label": "op08_p0_00_04_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 04 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_05",
+      "label": "op08_p0_00_04_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 05 F5",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_06",
+      "label": "op08_p0_00_04_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 06 F2",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_07",
+      "label": "op08_p0_00_04_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 07 FD",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_08",
+      "label": "op08_p0_00_04_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 08 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_09",
+      "label": "op08_p0_00_04_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 09 F3",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_04_0a",
+      "label": "op08_p0_00_04_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 04 0A F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_01",
+      "label": "op08_p0_00_05_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 01 F3",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_02",
+      "label": "op08_p0_00_05_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 02 F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_03",
+      "label": "op08_p0_00_05_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 03 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_04",
+      "label": "op08_p0_00_05_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 04 F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_05",
+      "label": "op08_p0_00_05_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 05 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_06",
+      "label": "op08_p0_00_05_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 06 F0",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_07",
+      "label": "op08_p0_00_05_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 07 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_08",
+      "label": "op08_p0_00_05_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 08 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_09",
+      "label": "op08_p0_00_05_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 09 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_05_0a",
+      "label": "op08_p0_00_05_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 05 0A F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_01",
+      "label": "op08_p0_00_06_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 01 F0",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_02",
+      "label": "op08_p0_00_06_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 02 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_03",
+      "label": "op08_p0_00_06_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 03 F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_04",
+      "label": "op08_p0_00_06_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 04 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_05",
+      "label": "op08_p0_00_06_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 05 F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_06",
+      "label": "op08_p0_00_06_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 06 F3",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_07",
+      "label": "op08_p0_00_06_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 07 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_08",
+      "label": "op08_p0_00_06_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 08 FD",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_09",
+      "label": "op08_p0_00_06_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 09 F2",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_06_0a",
+      "label": "op08_p0_00_06_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 06 0A F5",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_01",
+      "label": "op08_p0_00_07_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 01 F2",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_02",
+      "label": "op08_p0_00_07_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 02 F5",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_03",
+      "label": "op08_p0_00_07_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 03 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_04",
+      "label": "op08_p0_00_07_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 04 F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_05",
+      "label": "op08_p0_00_07_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 05 F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_06",
+      "label": "op08_p0_00_07_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 06 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_07",
+      "label": "op08_p0_00_07_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 07 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_08",
+      "label": "op08_p0_00_07_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 08 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_09",
+      "label": "op08_p0_00_07_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 09 F0",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_07_0a",
+      "label": "op08_p0_00_07_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 07 0A F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_01",
+      "label": "op08_p0_00_08_01",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 01 F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_02",
+      "label": "op08_p0_00_08_02",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 02 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_03",
+      "label": "op08_p0_00_08_03",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 03 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_04",
+      "label": "op08_p0_00_08_04",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 04 FD",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_05",
+      "label": "op08_p0_00_08_05",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 05 F2",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_06",
+      "label": "op08_p0_00_08_06",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 06 F5",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_07",
+      "label": "op08_p0_00_08_07",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 07 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_08",
+      "label": "op08_p0_00_08_08",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 08 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_09",
+      "label": "op08_p0_00_08_09",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 09 F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "op08_p0_00_08_0a",
+      "label": "op08_p0_00_08_0A",
+      "expect": "Stroke position distinct from other levels.",
+      "burst_hex": "55 08 00 00 08 0A F3",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "query_02",
+      "label": "query_02",
+      "expect": "No movement. Status or read response on notify.",
+      "burst_hex": "55 02 00 00 00 00 FC",
+      "burst_seconds": 1,
+      "one_shot": true
+    },
+    {
+      "id": "query_a0",
+      "label": "query_A0",
+      "expect": "No movement. Status or read response on notify.",
+      "burst_hex": "55 A0 00 00 00 00 FB",
+      "burst_seconds": 1,
+      "one_shot": true
+    },
+    {
+      "id": "boost_latch",
+      "label": "Boost latch (single frame)",
+      "expect": "Single non-zero frame sustains motion without repeat; stop halts.",
+      "burst_hex": "55 04 00 00 00 40 AA",
+      "burst_seconds": 1,
+      "stop_hex": "55 04 00 00 00 00 AA",
+      "one_shot": true
     },
     {
       "id": "stretch_stop",

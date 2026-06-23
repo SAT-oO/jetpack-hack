@@ -1,0 +1,214 @@
+{
+  "handshake": false,
+  "sustain_ms": 50,
+  "channel": "ffe1",
+  "checkpoints": [
+    {
+      "id": "stretch_l2",
+      "label": "Direct stretch level 2",
+      "expect": "Level 2 stroke",
+      "burst_hex": "55 08 00 00 01 02 FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "stretch_l3",
+      "label": "Direct stretch level 3",
+      "expect": "Level 3 stroke",
+      "burst_hex": "55 08 00 00 02 03 F7",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "stretch_l4",
+      "label": "Direct stretch level 4",
+      "expect": "Level 4 stroke",
+      "burst_hex": "55 08 00 00 03 04 F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "stretch_l6",
+      "label": "Direct stretch level 6",
+      "expect": "Level 6 stroke",
+      "burst_hex": "55 08 00 00 05 06 F0",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "stretch_l7",
+      "label": "Direct stretch level 7",
+      "expect": "Level 7 stroke",
+      "burst_hex": "55 08 00 00 06 07 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "stretch_l8",
+      "label": "Direct stretch level 8",
+      "expect": "Level 8 stroke",
+      "burst_hex": "55 08 00 00 07 08 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "stretch_l9",
+      "label": "Direct stretch level 9",
+      "expect": "Level 9 stroke",
+      "burst_hex": "55 08 00 00 08 09 F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m1_t1",
+      "label": "M1 / Fast travel 1",
+      "expect": "M1 / Fast at travel 0x01.",
+      "burst_hex": "55 08 00 03 01 01 F0",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m1_ta",
+      "label": "M1 / Fast travel 10",
+      "expect": "M1 / Fast at travel 0x0a.",
+      "burst_hex": "55 08 00 03 01 0A F5",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m2_t1",
+      "label": "M2 / Intense travel 1",
+      "expect": "M2 / Intense at travel 0x01.",
+      "burst_hex": "55 08 00 03 02 01 F3",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m2_ta",
+      "label": "M2 / Intense travel 10",
+      "expect": "M2 / Intense at travel 0x0a.",
+      "burst_hex": "55 08 00 03 02 0A F6",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m3_t1",
+      "label": "M3 / Teaser travel 1",
+      "expect": "M3 / Teaser at travel 0x01.",
+      "burst_hex": "55 08 00 03 03 01 F1",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m3_ta",
+      "label": "M3 / Teaser travel 10",
+      "expect": "M3 / Teaser at travel 0x0a.",
+      "burst_hex": "55 08 00 03 03 0A F4",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m4_t1",
+      "label": "M4 / Training travel 1",
+      "expect": "M4 / Training at travel 0x01.",
+      "burst_hex": "55 08 00 03 04 01 FD",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m4_ta",
+      "label": "M4 / Training travel 10",
+      "expect": "M4 / Training at travel 0x0a.",
+      "burst_hex": "55 08 00 03 04 0A F8",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m5_t1",
+      "label": "M5 / Thrill Seeking travel 1",
+      "expect": "M5 / Thrill Seeking at travel 0x01.",
+      "burst_hex": "55 08 00 03 05 01 FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m5_ta",
+      "label": "M5 / Thrill Seeking travel 10",
+      "expect": "M5 / Thrill Seeking at travel 0x0a.",
+      "burst_hex": "55 08 00 03 05 0A FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m6_t1",
+      "label": "M6 / Charming travel 1",
+      "expect": "M6 / Charming at travel 0x01.",
+      "burst_hex": "55 08 00 03 06 01 FC",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m6_ta",
+      "label": "M6 / Charming travel 10",
+      "expect": "M6 / Charming at travel 0x0a.",
+      "burst_hex": "55 08 00 03 06 0A F9",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m7_t1",
+      "label": "M7 / Seduction travel 1",
+      "expect": "M7 / Seduction at travel 0x01.",
+      "burst_hex": "55 08 00 03 07 01 FE",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m7_ta",
+      "label": "M7 / Seduction travel 10",
+      "expect": "M7 / Seduction at travel 0x0a.",
+      "burst_hex": "55 08 00 03 07 0A FB",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m8_t1",
+      "label": "M8 / Playful travel 1",
+      "expect": "M8 / Playful at travel 0x01.",
+      "burst_hex": "55 08 00 03 08 01 FA",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    },
+    {
+      "id": "m8_ta",
+      "label": "M8 / Playful travel 10",
+      "expect": "M8 / Playful at travel 0x0a.",
+      "burst_hex": "55 08 00 03 08 0A FF",
+      "burst_seconds": 4,
+      "stop_hex": "55 08 00 01 00 00 F9",
+      "one_shot": false
+    }
+  ]
+}

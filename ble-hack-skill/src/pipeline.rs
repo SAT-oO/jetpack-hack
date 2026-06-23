@@ -135,6 +135,31 @@ pub fn probe_passes_automation_gate(probe_md: &str) -> bool {
     has_ffe1 && motor_response
 }
 
+/// True when probe markdown shows likely motor families (opcode 0x04 AA and/or 0x08 CRC grids).
+pub fn motor_families_in_probe(probe_md: &str) -> bool {
+    let mut motor_aa = false;
+    let mut motor_crc = false;
+
+    for line in probe_md.lines() {
+        if !line.starts_with('|') {
+            continue;
+        }
+        let sent = line
+            .split('`')
+            .nth(1)
+            .unwrap_or("")
+            .to_uppercase();
+        if sent.starts_with("55 04") && sent.ends_with("AA") {
+            motor_aa = true;
+        }
+        if sent.starts_with("55 08 00 03") || sent.starts_with("55 08 00 00") {
+            motor_crc = true;
+        }
+    }
+
+    motor_aa || motor_crc
+}
+
 fn score_device(
     company_id: Option<u16>,
     local_name: Option<&str>,

@@ -7,7 +7,9 @@ use std::path::{Path, PathBuf};
 
 pub const SESSION_FILE: &str = "ble_session.json";
 pub const DEFAULT_PLAN: &str = "verify_plan.json";
+pub const EXTENDED_PLAN: &str = "verify_plan_extended.json";
 pub const DEFAULT_VERIFY_OUTPUT: &str = "verify_results.md";
+pub const EXTENDED_VERIFY_OUTPUT: &str = "verify_results_extended.md";
 pub const SCAN_RESULTS: &str = "scan_results.md";
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -72,6 +74,21 @@ pub fn resolve_output_path(workdir: &Path, cli_output: Option<&str>) -> PathBuf 
     cli_output
         .map(PathBuf::from)
         .unwrap_or_else(|| workdir.join(DEFAULT_VERIFY_OUTPUT))
+}
+
+/// Brand/product for FINDINGS rendering — CLI flags, else session local name, else generic.
+pub fn brand_product_from_args(workdir: &Path, args: &[String]) -> (String, String) {
+    let brand = arg_value(args, "--brand").unwrap_or_else(|| "Unknown".into());
+    let product = arg_value(args, "--product").unwrap_or_else(|| {
+        session_local_name(workdir).unwrap_or_else(|| "BLE Device".into())
+    });
+    (brand, product)
+}
+
+pub fn session_local_name(workdir: &Path) -> Option<String> {
+    let path = workdir.join(SESSION_FILE);
+    let session: SessionFile = serde_json::from_str(&fs::read_to_string(path).ok()?).ok()?;
+    session.local_name
 }
 
 pub fn save_session(workdir: &Path, device_id: &str, local_name: Option<&str>) -> Result<()> {
@@ -152,7 +169,7 @@ mod tests {
     fn parses_scan_primary_row() {
         let md = r#"
 | tier | device_id | name | brand_match | rssi | score |
-| PRIMARY | `abc-123` | The Jetpack | true | -44 | 120 |
+| PRIMARY | `abc-123` | Example Device | true | -44 | 120 |
 "#;
         let dir = std::env::temp_dir().join("ble_workdir_test_scan");
         let _ = fs::remove_dir_all(&dir);

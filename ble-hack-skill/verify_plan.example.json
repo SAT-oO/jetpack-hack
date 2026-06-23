@@ -5,35 +5,27 @@
   "checkpoints": [
     {
       "id": "status_query",
-      "label": "Status / battery query",
-      "expect": "No movement. Status or battery may update if visible.",
-      "burst_hex": "55 02 00 00 00 00 00",
+      "label": "Status query",
+      "expect": "No actuator movement; status may update if observable.",
+      "burst_hex": "55 02 00 00 00 00 FC",
       "burst_seconds": 1,
       "one_shot": true
     },
     {
       "id": "motor_stop",
       "label": "Motor stop",
-      "expect": "All motion stops; device holds position.",
-      "burst_hex": "55 03 00 00 00 00 00",
+      "expect": "Actuator off; holds position.",
+      "burst_hex": "55 04 00 00 00 00 AA",
       "burst_seconds": 1,
       "one_shot": true
     },
     {
-      "id": "motor_low",
-      "label": "Motor low",
-      "expect": "Low-intensity movement distinct from stop.",
-      "burst_hex": "55 03 00 00 01 01 00",
+      "id": "motor_level_mid",
+      "label": "Motor level 0x40",
+      "expect": "Moderate actuator output for a few seconds.",
+      "burst_hex": "55 04 00 00 00 40 AA",
       "burst_seconds": 4,
-      "stop_hex": "55 03 00 00 00 00 00"
-    },
-    {
-      "id": "motor_high",
-      "label": "Motor high",
-      "expect": "Stronger movement than low checkpoint.",
-      "burst_hex": "55 03 00 00 05 05 00",
-      "burst_seconds": 4,
-      "stop_hex": "55 03 00 00 00 00 00"
+      "stop_hex": "55 04 00 00 00 00 AA"
     }
   ]
 }

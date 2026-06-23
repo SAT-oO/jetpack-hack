@@ -4,14 +4,33 @@
 
 | label | channel | sent | response | class |
 | ----- | ------- | ---- | -------- | ----- |
+| idle_notify | FFE1/FFE2 | `(listen)` | `55 FE 08 03 01 00 00` | non-standard |
 | read_0000ffa2 | FFE1/FFE2 | `(read)` | `` | non-standard |
 | read_0000ffe2 | FFE1/FFE2 | `(read)` | `` | non-standard |
 | read_0000ffa2 | AE01/AE02 | `(read)` | `` | non-standard |
 | read_0000ffe2 | AE01/AE02 | `(read)` | `` | non-standard |
 | read_0000ffa2 | FFA1/FFA2 | `(read)` | `` | non-standard |
 | read_0000ffe2 | FFA1/FFA2 | `(read)` | `` | non-standard |
-| probeA_H=00 | AE01/AE02 | `00 00 00 00 00 00 00` | `01 DB 6C 46 EC 1C D4 9D F6 DE 72 F5 66 08 EC 30 D9` | non-standard |
-| probeB_H=00 | AE01/AE02 | `00 01 00 00 00 00 00` | `01 28 CE 31 F6 D1 27 84 42 E2 E6 EC 31 07 69 4A 70` | non-standard |
+| probeA_H=00 | FFE1/FFE2 | `00 00 00 00 00 00 00` | `00 FF 01 00 00 00 00` | non-standard |
+| probeB_H=00 | FFE1/FFE2 | `00 01 00 00 00 00 00` | `00 FF 01 00 00 00 00` | non-standard |
+| probeC_H=00 | FFE1/FFE2 | `03 00 00 00` | `03 FF 01 00 00 00 00` | non-standard |
+| probeA_H=55 | FFE1/FFE2 | `55 00 00 00 00 00 00` | `55 00 03 01 00 00 58 41 40 76 FA 6A D3 4E` | non-standard |
+| probeB_H=55 | FFE1/FFE2 | `55 01 00 00 00 00 00` | `55 FF 01 00 00 00 00` | non-standard |
+| probeC_H=55 | FFE1/FFE2 | `03 55 00 00` | `03 FF 01 00 00 00 00` | non-standard |
+| probeA_H=AA | FFE1/FFE2 | `AA 00 00 00 00 00 00` | `AA FF 01 00 00 00 00` | non-standard |
+| probeB_H=AA | FFE1/FFE2 | `AA 01 00 00 00 00 00` | `AA FF 01 00 00 00 00` | non-standard |
+| probeC_H=AA | FFE1/FFE2 | `03 AA 00 00` | `03 FF 01 00 00 00 00` | non-standard |
+| probeA_H=A5 | FFE1/FFE2 | `A5 00 00 00 00 00 00` | `A5 FF 01 00 00 00 00` | non-standard |
+| probeB_H=A5 | FFE1/FFE2 | `A5 01 00 00 00 00 00` | `A5 FF 01 00 00 00 00` | non-standard |
+| probeC_H=A5 | FFE1/FFE2 | `03 A5 00 00` | `03 FF 01 00 00 00 00` | non-standard |
+| probeA_H=5A | FFE1/FFE2 | `5A 00 00 00 00 00 00` | `5A FF 01 00 00 00 00` | non-standard |
+| probeB_H=5A | FFE1/FFE2 | `5A 01 00 00 00 00 00` | `5A FF 01 00 00 00 00` | non-standard |
+| probeC_H=5A | FFE1/FFE2 | `03 5A 00 00` | `03 FF 01 00 00 00 00` | non-standard |
+| probeA_H=FF | FFE1/FFE2 | `FF 00 00 00 00 00 00` | `FF FF 01 00 00 00 00` | non-standard |
+| probeB_H=FF | FFE1/FFE2 | `FF 01 00 00 00 00 00` | `FF FF 01 00 00 00 00` | non-standard |
+| probeC_H=FF | FFE1/FFE2 | `03 FF 00 00` | `03 FF 01 00 00 00 00` | non-standard |
+| probeA_H=00 | AE01/AE02 | `00 00 00 00 00 00 00` | `01 01 F8 A4 35 06 57 3C 22 2B BF 45 CE 15 1E 4C 29` | non-standard |
+| probeB_H=00 | AE01/AE02 | `00 01 00 00 00 00 00` | `01 8A 7F 3E FC BB 91 AF D0 99 85 13 4C C1 AC 02 1E` | non-standard |
 | probeC_H=00 | AE01/AE02 | `03 00 00 00` | `(no response)` | silent |
 | probeA_H=55 | AE01/AE02 | `55 00 00 00 00 00 00` | `(no response)` | silent |
 | probeB_H=55 | AE01/AE02 | `55 01 00 00 00 00 00` | `(no response)` | silent |
@@ -112,17 +131,12 @@
 | opcode_1E | FFE1/FFE2 | `55 1E 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
 | opcode_1F | FFE1/FFE2 | `55 1F 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
 | opcode_20 | FFE1/FFE2 | `55 20 00 00 01 01 00` | `55 FF 01 00 00 00 00` | non-standard |
-| burst_550400000000AA | FFE1/FFE2 | `55 04 00 00 00 00 AA` | `55 04 00 00 00 00 AA` | echo |
-| burst_550400000020AA | FFE1/FFE2 | `55 04 00 00 00 20 AA` | `55 04 00 00 00 20 AA` | echo |
-| burst_550400000040AA | FFE1/FFE2 | `55 04 00 00 00 40 AA` | `55 04 00 00 00 40 AA` | echo |
-| burst_550400000080AA | FFE1/FFE2 | `55 04 00 00 00 80 AA` | `55 04 00 00 00 80 AA` | echo |
-| burst_5504000000FFAA | FFE1/FFE2 | `55 04 00 00 00 FF AA` | `55 04 00 00 00 FF AA` | echo |
-| burst_550800000101FC | FFE1/FFE2 | `55 08 00 00 01 01 FC` | `55 08 00 00 01 01 FC` | echo |
-| burst_550800010000F9 | FFE1/FFE2 | `55 08 00 01 00 00 F9` | `55 08 00 01 00 00 F9` | echo |
-| burst_550800030101F0 | FFE1/FFE2 | `55 08 00 03 01 01 F0` | `55 08 00 03 01 01 F0` | echo |
-| burst_550800030105F4 | FFE1/FFE2 | `55 08 00 03 01 05 F4` | `55 08 00 03 01 05 F4` | echo |
-| burst_550300000101F5 | FFE1/FFE2 | `55 03 00 00 01 01 F5` | `55 FF 01 00 00 00 00` | non-standard |
-| burst_550200000000FC | FFE1/FFE2 | `55 02 00 00 00 00 FC` | `55 02 17 01 00 00 00` | non-standard |
+| jetpack_battery | FFE1/FFE2 | `55 02 00 00 00 00 FC` | `55 02 17 01 00 00 00` | non-standard |
+| jetpack_status | FFE1/FFE2 | `55 A0 00 00 00 00 FB` | `55 A0 01 0A 00 00 00` | non-standard |
+| jetpack_boost_40 | FFE1/FFE2 | `55 04 00 00 00 40 AA` | `55 04 00 00 00 40 AA` | echo |
+| jetpack_stretch_l1 | FFE1/FFE2 | `55 08 00 00 01 01 FC` | `55 08 00 00 01 01 FC` | echo |
+| jetpack_m1_t5 | FFE1/FFE2 | `55 08 00 03 01 05 F4` | `55 08 00 03 01 05 F4` | echo |
+| jetpack_stretch_stop | FFE1/FFE2 | `55 08 00 01 00 00 F9` | `55 08 00 01 00 00 F9` | echo |
 | fredorch_login | AE01/AE02 | `55 03 99 9C AA` | `(no response)` | silent |
 | fredorch_pat_00 | AE01/AE02 | `55 04 16 00 1A AA` | `(no response)` | silent |
 | fredorch_pat_01 | AE01/AE02 | `55 04 16 01 1B AA` | `(no response)` | silent |
