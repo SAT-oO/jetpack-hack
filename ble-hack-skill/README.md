@@ -41,8 +41,10 @@ Copy `ble-hack-skill/verify_plan.example.json` → `verify_plan.json` in the pro
 
 **6. Human gate — required**
 ```bash
-cargo run -p ble-hack-skill --bin ble_verify -- --device UUID --plan verify_plan.json --output verify_results.md
+cargo run -p ble-hack-skill --bin ble_verify
 ```
+Run from the project root (where `verify_plan.json` and `ble_session.json` or `scan_results.md` live). Device UUID is resolved automatically. Optional: `--plan other_plan.json`, `--workdir path`.
+
 User at device. At each checkpoint: observe movement. Press **y** if correct, **n** if wrong/none, **r** to replay, **q** to quit.
 
 **7. Write FINDINGS.md**

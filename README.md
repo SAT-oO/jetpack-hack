@@ -37,8 +37,9 @@ cargo run --bin jetpack_sweep -- --device <UUID> --output sweep_results.md
 **Human verification:**
 
 ```bash
-cargo run -p ble-hack-skill --bin ble_verify -- \
-  --device <UUID> --plan verify_plan.json --output verify_results.md
+cargo run -p ble-hack-skill --bin ble_verify
+# M-modes only:
+cargo run -p ble-hack-skill --bin ble_verify -- --plan verify_plan_m_modes.json
 ```
 
 **One-go (generic skill only — does not run `jetpack_probe`):**

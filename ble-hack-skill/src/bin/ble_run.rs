@@ -5,6 +5,7 @@
 
 use anyhow::{bail, Context, Result};
 use ble_hack_skill::pipeline::{self, pick_target, probe_passes_automation_gate};
+use ble_hack_skill::workdir as wd;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::Stdio;
@@ -66,6 +67,7 @@ async fn main() -> Result<()> {
             target.score
         );
         device_id = Some(target.id.clone());
+        wd::save_session(&workdir, &target.id, target.local_name.as_deref())?;
 
         if args.iter().any(|a| a == "--discover") {
             let seconds_s = scan_seconds.to_string();
@@ -122,7 +124,7 @@ async fn main() -> Result<()> {
         time::sleep(Duration::from_secs(5)).await;
     }
 
-    let device_id = device_id.context("no device selected")?;
+    let _device_id = device_id.context("no device selected")?;
     let plan_path = workdir.join("verify_plan.json");
     if !plan_path.exists() {
         let example = Path::new("ble-hack-skill/verify_plan.example.json");
@@ -137,27 +139,18 @@ async fn main() -> Result<()> {
 
     if skip_verify {
         println!("\n--skip-verify set. Next:");
-        println!(
-            "  cargo run -p ble-hack-skill --bin ble_verify -- --device {device_id} --plan {}",
-            plan_path.display()
-        );
+        println!("  cargo run -p ble-hack-skill --bin ble_verify -- --workdir {}", workdir.display());
         return Ok(());
     }
 
     // STEP 5 — human verify (interactive; must run in a real terminal)
     println!("\n═══ STEP 5: Human verification (watch the device) ═══\n");
-    let verify_out = workdir.join("verify_results.md");
+    let verify_out = workdir.join(wd::DEFAULT_VERIFY_OUTPUT);
+    let workdir_s = workdir.to_str().unwrap();
     let status = run_subcommand_interactive(
         &workdir,
         "ble_verify",
-        &[
-            "--device",
-            &device_id,
-            "--plan",
-            plan_path.to_str().unwrap(),
-            "--output",
-            verify_out.to_str().unwrap(),
-        ],
+        &["--workdir", workdir_s],
     )
     .await?;
 

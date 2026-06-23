@@ -1,8 +1,11 @@
 //! Interactive human verification — mandatory gate before FINDINGS.md.
 //!
-//!   cargo run --bin ble_verify -- --device UUID --plan verify_plan.json
+//!   cargo run -p ble-hack-skill --bin ble_verify
+//!   cargo run -p ble-hack-skill --bin ble_verify -- --workdir .
+//!   cargo run -p ble-hack-skill --bin ble_verify -- --plan verify_plan_m_modes.json
 //!
-//! At each checkpoint the user watches the device and chooses:
+//! Device UUID is read from `ble_session.json` or `scan_results.md` in the workdir
+//! unless `--device` is passed.
 //!   y = success (correct movement) → next
 //!   n = error (wrong/no movement)  → next, marked failed
 //!   r = replay this checkpoint
@@ -12,6 +15,7 @@ use anyhow::{Context, Result};
 use ble_hack_skill::session::{
     adapter, connect, send_and_wait, send_burst, send_handshake, spaced_hex, ChannelPair,
 };
+use ble_hack_skill::workdir;
 use btleplug::api::{bleuuid::uuid_from_u16, Peripheral};
 use serde::Deserialize;
 use std::fs;
@@ -95,12 +99,16 @@ enum PromptChoice {
 #[tokio::main]
 async fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
-    let device = arg_value(&args, "--device").context("--device UUID required")?;
-    let plan_path = arg_value(&args, "--plan").context("--plan verify_plan.json required")?;
-    let output = arg_value(&args, "--output").unwrap_or_else(|| "verify_results.md".into());
+    let workdir = workdir::workdir_from_args(&args);
+    let device = workdir::resolve_device(&workdir, arg_value(&args, "--device").as_deref())?;
+    let plan_path = workdir::resolve_plan_path(&workdir, arg_value(&args, "--plan").as_deref());
+    let output = workdir::resolve_output_path(&workdir, arg_value(&args, "--output").as_deref());
 
-    let plan: Plan = serde_json::from_str(&fs::read_to_string(&plan_path)?)
-        .with_context(|| format!("parse plan: {plan_path}"))?;
+    let plan: Plan = serde_json::from_str(
+        &fs::read_to_string(&plan_path)
+            .with_context(|| format!("read plan: {}", plan_path.display()))?,
+    )
+    .with_context(|| format!("parse plan: {}", plan_path.display()))?;
 
     if plan.checkpoints.is_empty() {
         anyhow::bail!("plan has no checkpoints");
@@ -215,10 +223,10 @@ async fn main() -> Result<()> {
 
     session.peripheral.disconnect().await?;
 
-    let md = format_results(&device, &plan_path, &results);
+    let md = format_results(&device, plan_path.to_str().unwrap(), &results);
     fs::write(&output, &md)?;
     print_summary(&results);
-    println!("\nWrote {output}");
+    println!("\nWrote {}", output.display());
     println!("Only SUCCESS rows may be copied into FINDINGS.md.");
 
     Ok(())

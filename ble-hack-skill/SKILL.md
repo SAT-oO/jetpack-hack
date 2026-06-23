@@ -146,8 +146,10 @@ This alone locates the target often enough to skip manual address entry.
 **Required before FINDINGS.md.**
 
 ```bash
-cargo run --bin ble_verify -- --device UUID --plan verify_plan.json --output verify_results.md
+cargo run --bin ble_verify -- --workdir .
 ```
+
+Device UUID is read from `ble_session.json` (written by `ble_run` / scan) or `scan_results.md`. Override with `--device` only when needed.
 
 1. User watches device during each checkpoint burst.
 2. Compare to `expect` in plan — thrust, stop, vibration, etc.
